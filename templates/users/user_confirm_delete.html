@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}წაშლა{% endblock %}
+
+{% block content %}
+    <h1>ნამდვილად წაშლა?</h1>
+    <div class="card">
+        <p>დარწმუნებთ წაშლათ <strong>{{ motamage.saxeli }} {{ motamage.gvari }}</strong>?</p>
+        <p>ეს მოქმედება დაბრუნებაა.</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">და, წავშლა</button>
+            <a href="{% url 'motamage_detail' motamage.pk %}" class="btn btn-secondary">გაუქმე</a>
+        </form>
+    </div>
+{% endblock %}

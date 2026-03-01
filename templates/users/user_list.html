@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}მომხმარებლები{% endblock %}
+
+{% block content %}
+    <h1>ყველა მომხმარებელი</h1>
+    {% if motamagebi %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>სახელი</th>
+                    <th>გვარი</th>
+                    <th>Email</th>
+                    <th>ასაკი</th>
+                    <th>ქალაქი</th>
+                    <th>სტატუსი</th>
+                    <th>დამაႾfmatება</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in motamagebi %}
+                <tr>
+                    <td>{{ m.pk }}</td>
+                    <td><a href="{% url 'motamage_detail' m.pk %}">{{ m.saxeli }}</a></td>
+                    <td>{{ m.gvari }}</td>
+                    <td>{{ m.email }}</td>
+                    <td>{{ m.asaki }}</td>
+                    <td>{{ m.qalaqi }}</td>
+                    <td>
+                        <span class="badge badge-{{ m.statusi }}">{{ m.get_statusi_display }}</span>
+                    </td>
+                    <td>
+                        <a href="{% url 'motamage_detail' m.pk %}">+</a> |
+                        <a href="{% url 'motamage_washla' m.pk %}" style="color:#e74c3c;">წაშლა</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>მომხმარებელი არ არის. დაამაႾfmatეთ <a href="/admin/">ადმინ პანელიდან</a>.</p>
+    {% endif %}
+{% endblock %}

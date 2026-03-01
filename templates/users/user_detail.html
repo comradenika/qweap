@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{{ motamage.saxeli }} {{ motamage.gvari }}{% endblock %}
+
+{% block content %}
+    <h1>მომხმარებელის დეტალები</h1>
+    <div class="card">
+        <div class="field-row">
+            <span class="field-label">ID:</span> {{ motamage.pk }}
+        </div>
+        <div class="field-row">
+            <span class="field-label">სახელი:</span> {{ motamage.saxeli }}
+        </div>
+        <div class="field-row">
+            <span class="field-label">გვარი:</span> {{ motamage.gvari }}
+        </div>
+        <div class="field-row">
+            <span class="field-label">Email:</span> {{ motamage.email }}
+        </div>
+        <div class="field-row">
+            <span class="field-label">ასაკი:</span> {{ motamage.asaki }}
+        </div>
+        <div class="field-row">
+            <span class="field-label">ქალაქი:</span> {{ motamage.qalaqi }}
+        </div>
+        <div class="field-row">
+            <span class="field-label">სტატუსი:</span>
+            <span class="badge badge-{{ motamage.statusi }}">{{ motamage.get_statusi_display }}</span>
+        </div>
+        <div class="field-row">
+            <span class="field-label">დაამაႾfmatებია:</span> {{ motamage.sheqmnilia|date:"Y-m-d H:i" }}
+        </div>
+        <br>
+        <a href="{% url 'motamagebis_sia' %}" class="btn btn-secondary">← უკან სიისაკენ</a>
+        <a href="{% url 'motamage_washla' motamage.pk %}" class="btn btn-danger">წაშლა</a>
+    </div>
+{% endblock %}
