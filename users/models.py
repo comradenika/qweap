@@ -1,10 +1,8 @@
 from django.db import models
 
 
-# იუზერის მოდელი
 class Motamage(models.Model):
 
-    # სტატუსის არჩევანები
     STATUSI = [
         ('aktive', 'აქტიური'),
         ('araaktive', 'არააქტიური'),
